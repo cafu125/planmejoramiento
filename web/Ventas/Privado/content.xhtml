@@ -110,7 +110,17 @@
                     </center>
                     
                       </h:form>
-                 
+                 <h:form id="miformUno" enctype="multipart/form-data" style="margin-bottom: 10px"> 
+
+                     <h:inputFile id="fileImgUno" onchange="$('#miformUno\\:myBoton').click();" style="display: none" value="#{regstroVehiculoRequest.archivoExcel}"></h:inputFile>
+
+                     <h:commandButton id="myBoton" style="display: none" class="btn btn-outline-success" action="#{regstroVehiculoRequest.subeExcel()}" value="Cargar Imagen">
+                             <f:ajax  execute="fileImgUno" ></f:ajax>
+                    </h:commandButton>
+
+                    <button type="button" onclick="$('#miformUno\\:fileImgUno').click();" class="btn btn-outline-success btn-sm __web-inspector-hide-shortcut__"><i class="fa fa-magic"></i>&nbsp; Cargar Productos Xlsx</button>
+
+                </h:form>
                
                
             </div>

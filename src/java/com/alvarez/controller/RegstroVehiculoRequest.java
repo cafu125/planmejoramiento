@@ -62,7 +62,7 @@ public class RegstroVehiculoRequest {
     private List<Vehiculo> ListaVehiculo ;
     private List<Datospersonales> datos;
     private List<Categorias> ListaCategorias;
-
+              
     public RegstroVehiculoRequest() {
     }
 
@@ -147,6 +147,93 @@ public class RegstroVehiculoRequest {
     }
     
    
+      public void insertarXLS(List cellDataList) {
+        try {
+            int filasContador = 0;
+            for (int i = 0; i < cellDataList.size(); i++) {
+                List cellTemp = (List) cellDataList.get(i);
+                Vehiculo newV = new Vehiculo();
+                for (int j = 0; j < cellTemp.size(); j++) {
+                    XSSFCell hssfCell = (XSSFCell) cellTemp.get(j);
+                    switch (filasContador) {
+                        case 0:
+                            newV.setVehiculoPlaca(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 1:
+                            newV.setVehiculocolor(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        
+                        case 2:
+                            newV.setVehiculoestado(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 3:
+                            newV.setVehiculomarca(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 4:
+                            newV.setVehiculomodelo((int) hssfCell.getNumericCellValue());
+                            filasContador++;
+                            break;
+                        case 5:
+                            Categorias nueva = cateEJB.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newV.setCategoriaid(nueva);
+                            vehiculoEJB.create(newV);
+                            filasContador = 0;
+                            break;
+                    }
+
+                }
+            }
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void subeExcel() throws IOException {
+        String mensajeSw = "";
+        if (archivoExcel != null) {
+            if (archivoExcel.getSize() < 4000000) {
+                if ("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet".equals(archivoExcel.getContentType())) {
+                    InputStream input = archivoExcel.getInputStream();
+                    List cellData = new ArrayList();
+                    try {
+                        XSSFWorkbook workBook = new XSSFWorkbook(input);
+                        XSSFSheet hssfSheet = workBook.getSheetAt(0);
+                        Iterator rowIterator = hssfSheet.rowIterator();
+                        rowIterator.next();
+
+                        while (rowIterator.hasNext()) {
+                            XSSFRow hssfRow = (XSSFRow) rowIterator.next();
+                            Iterator iterator = hssfRow.cellIterator();
+                            List cellTemp = new ArrayList();
+                            while (iterator.hasNext()) {
+                                XSSFCell hssfCell = (XSSFCell) iterator.next();
+                                cellTemp.add(hssfCell);
+                            }
+                            cellData.add(cellTemp);
+                        }
+                        insertarXLS(cellData);
+                    } catch (Exception e) {
+                        PrimeFaces.current().executeScript("swal('Problemas ingresando el archivo' , 'error');");
+                    }
+                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                    context.redirect("index.xhtml");
+                } else {
+                    mensajeSw = "swal('El archivo' , ' no es una XLSX ', 'error')";
+                }
+            } else {
+                mensajeSw = "swal('El archivo' , ' es muy grande  ', 'error')";
+            }
+        } else {
+            mensajeSw = "swal('No puede cargar ' , ' EL  archivo  ', 'error')";
+        }
+
+        PrimeFaces.current().executeScript(mensajeSw);
+    }
+
     
     
    
