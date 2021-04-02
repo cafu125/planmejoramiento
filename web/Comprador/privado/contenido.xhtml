@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+
+        <ui:composition>
+            <h:form>
+                 <p:panelGrid columns="3">
+                    <label>Categorias</label>
+                    <h:selectOneMenu value="#{buscarView.id_cat_selec}">
+                       <f:selectItems  value="#{buscarView.listacategorias}" var="c" itemLabel="#{c.categoria}" itemValue="#{c.categoriaid}"/>
+                    </h:selectOneMenu>
+                    <p:commandButton icon="ui-icon-search" value="buscar" update="lista" actionListener="#{buscarView.listarPorcategorias()}"/>
+                </p:panelGrid>
+                  <br></br>
+                  <p:dataList id="lista" value="#{buscarView.lista}" var="v">
+                      <p:panel header="#{v.vehiculomodelo}">
+                           <label>color</label>
+                           <br></br>
+                      #{v.vehiculocolor}
+                      <br></br>
+                       <br></br>
+                      <label>precio</label>
+                      <br></br>
+                        #{v.vehiculoprecio}
+                      <br></br>
+                       <br></br>
+                      <label>codigo vendedor</label>
+                      <br></br>                    
+                      #{v.datosid.datosid}
+                      <br></br>
+                        <p:panelGrid columns="3">
+                      <label> codigo vendedor</label>
+                       <h:selectOneMenu value="#{buscarpersonas.id_datos_selec}">
+                           <f:selectItems  value="#{buscarpersonas.datos}" var="d" itemLabel="#{d.datosid}" itemValue="#{d.datosid}"/>
+                    </h:selectOneMenu>
+                      <p:commandButton icon="ui-icon-search"  actionListener="#{buscarpersonas.buscarPornombre()}" update="datos"   value="Buscar" />
+                      </p:panelGrid>
+                      </p:panel>
+                      <p:dataList id="datos" value="#{buscarpersonas.datos}" var="dat">
+                          <p:panel header="#{dat.nombre} #{dat.apellido}">
+                              <label>telefono</label>
+                              #{dat.telefono}
+                          </p:panel>
+                      </p:dataList>
+                </p:dataList >
+                
+              </h:form>
+         
+        </ui:composition>
+
+
+
+
+
+    </h:body>
+
+</html>
+

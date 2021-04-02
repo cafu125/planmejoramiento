@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+      
+
+    <h:body >
+
+        <ui:composition class="bg-dark">
+            <div class="card-body ">
+                <h:form>
+                    <center>
+                        <p:messages id="mensaje"  showSummary="true" showDetail="true"/>
+                        <p:fieldset legend= "vehicle data">
+                            <h:panelGrid columns="1" >
+
+                              <div class="form-group">
+                                    <label>categorias</label>
+                                    <h:selectOneMenu  id="regCategoria"   class="form-control" value="#{regstroVehiculoRequest.categoria.categoria}">
+                                        <f:selectItem  itemLabel="---" itemValue="#{null}" noSelectionOption="true" />
+                                        <f:selectItem itemValue="Automoviles" itemLabel="Automoviles"/>
+                                        <f:selectItem itemValue="Camperos" itemLabel="Camperos"/> 
+                                        <f:selectItem itemValue="Camiones" itemLabel="Camiones"/> 
+                                        <f:selectItem itemValue="Tractomulas" itemLabel="Tractomulas"/> 
+                                        <f:selectItem itemValue="Bans" itemLabel="Bans"/> 
+                                        <f:selectItem itemValue="Buses" itemLabel="Buses"/> 
+                                    </h:selectOneMenu>
+                                    
+                                </div>
+                                
+
+                                <br></br>
+
+                                <div class="form-group">
+                                    <label>vehicle model</label>
+
+                                    <h:inputText  id="regModelo"  required="true"  requiredMessage="Enter your last name" class="form-control" html5:placeholder="vehicle model" value="#{regstroVehiculoRequest.objvehiculo.vehiculomodelo}"/>
+                                    <h:message style="color: red" for="regModelo"></h:message>
+                                </div>
+
+                                <br></br>
+
+                                <div class="form-group">
+                                    <label>vehicle plate</label>
+
+                                    <h:inputText  id="regplaca"  required="true"  requiredMessage="Enter your last name" class="form-control" html5:placeholder="vehicle plate" value="#{regstroVehiculoRequest.objvehiculo.vehiculoPlaca}"/>
+                                    <h:message style="color: red" for="regplaca"></h:message>
+                                </div>
+
+                                <br></br>
+
+                                <div class="form-group">
+
+                                    <label>vehicle brand</label>
+
+                                    <h:inputText  id="regMarca"  required="true"  requiredMessage="Enter your last name" class="form-control" html5:placeholder="vehicle brand" value="#{regstroVehiculoRequest.objvehiculo.vehiculomarca}"/>
+                                    <h:message style="color: red" for="regMarca"></h:message>
+                                </div>
+                                <br></br>
+                                <div class="form-group">
+                                    <label>vehicle color</label>
+
+                                    <h:inputText id="regColor"  required="true"  requiredMessage="Enter your last name" class="form-control" html5:placeholder="vehicle brand" value="#{regstroVehiculoRequest.objvehiculo.vehiculocolor}"/>
+                                    <h:message style="color: red" for="regColor"></h:message>
+                                </div>
+
+                                <br></br>
+                                <div class="form-group">
+                                    <label>vehicle status</label>
+
+                                    <h:selectOneMenu  id="regEstado"   class="form-control" value="#{regstroVehiculoRequest.objvehiculo.vehiculoestado}">
+                                        <f:selectItem  itemLabel="---" itemValue="#{null}" noSelectionOption="true" />
+                                        <f:selectItem itemValue="Nuevo" itemLabel="Nuevo"/>
+                                        <f:selectItem itemValue="Usado" itemLabel="Usado"/> 
+                                    </h:selectOneMenu>
+                                </div>
+                                <br></br>
+                                <div class="form-group">
+                                    <label>vehicle Precio</label>
+
+                                    <h:inputText id="regPrecio"  required="true"  requiredMessage="Enter your last name" class="form-control" html5:placeholder="vehicle brand" value="#{regstroVehiculoRequest.objvehiculo.vehiculoprecio}"/>
+                                    <h:message style="color: red" for="regPrecio"></h:message>
+                                </div>
+
+                                <br></br>
+
+
+                                <div class="form-group">
+                                    <label>seller name</label>
+
+                                    <h:selectOneMenu  id="regpersona"   class="form-control" value="#{regstroVehiculoRequest.datospersonales.datosid}">
+                                        <f:selectItems value="#{regstroVehiculoRequest.datos}" var="d" itemLabel="#{d.nombre}" itemValue="#{d.datosid}"/>
+                                    </h:selectOneMenu>
+
+                                </div>
+
+                                <br></br>
+
+                                <div>
+                                    <h:commandButton  actionListener="#{regstroVehiculoRequest.registrarVehiculo()}"   class="btn btn-primary btn-flat m-b-30 m-t-30" value="Register Vehicle"/>
+
+                                </div>
+          
+                            </h:panelGrid>
+                        </p:fieldset> 
+                    </center>
+                    
+                      </h:form>
+                 
+               
+               
+            </div>
+        </ui:composition>
+
+
+
+
+
+    </h:body>
+
+</html>
+

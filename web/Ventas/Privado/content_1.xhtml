@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+        
+    
+    
+
+    <h:body>
+
+        <ui:composition>
+
+
+            <div class="col-md-12 bg-dark">
+                <div class="card">
+                    <div class="card-header" style="background: #99abb4;">
+                        <center>  <strong class="card-title">Vehicle list</strong> </center>
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+
+                                        <th><center>License plate</center></th>
+                                        <th><center>Model</center></th>
+                                        <th><center>Brand</center></th>
+                                        <th><center>color</center></th>
+                                        <th><center>State</center></th>
+                                        <th><center>Price</center></th>
+                                        <th><center>Edit</center></th>
+                                        <th><center>Delete</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <c:forEach items="#{regstroVehiculoRequest.listaVehiculo}" var="veh">
+                                        <tr >
+
+                                            <td><center><h:inputText required="true"  value="#{veh.vehiculoPlaca}"/></center></td>
+                                            <td><center><h:inputText required="true"  value="#{veh.vehiculomodelo}"/></center></td>
+                                            <td><center><h:inputText required="true"  value="#{veh.vehiculomarca}" /></center></td>
+                                             <td><center><h:inputText required="true"  value="#{veh.vehiculocolor}"/></center></td>
+                                            <td><center><h:inputText required="true"  value="#{veh.vehiculoestado}"/></center></td>
+                                            <td><center><h:inputText required="true"  value="#{veh.vehiculoprecio}"/></center></td>
+
+                                            <td>
+                                          <h:commandButton action="#{regstroVehiculoRequest.modificar(veh)}"  class="btn btn-success btn-flat m-b-30 m-t-30" value="Edit"/>
+                                            </td>
+                                            <td>
+                                                <h:commandButton action="#{regstroVehiculoRequest.eliminar(veh)}"  class="btn btn-danger btn-flat m-b-30 m-t-30" value="Delete"/>
+
+                                            </td>
+                                           
+                                        </tr>
+                                    </c:forEach>    
+                                </tbody>
+                            </table>
+                        </h:form>
+                    </div>
+                                            
+                        <div  class="col-md-2">
+                            <h:form >
+                                <h:commandButton actionListener="#{regstroVehiculoRequest.verReporte()}" class="btn btn-success mb-1" value="Generate Report"/>
+                                 </h:form>
+                               </div>
+                    <br></br>
+                    <div class="col-md-2" >
+                        <h:form>
+                            <h:commandButton  actionListener="#{insisiarSesionSesion.correoMasivo()}"   class="btn btn-success mb-1" value="Offers"/>
+                                </h:form>  
+                    </div>
+                   
+                      </div>
+
+            </div>    
+        </ui:composition>
+
+    </h:body>
+
+</html>
+
