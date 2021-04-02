@@ -15,8 +15,8 @@ import javax.mail.internet.MimeMessage;
  */
 public class Email {
     public static void sendModificacion(String para, String Nombres, String nombUsu, String clave) {
-        final String user = "";//cambiará en consecuencia al servidor utilizado
-        final String pass = "";
+        final String user = "calombo1903@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "Carlos19030";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
@@ -39,12 +39,12 @@ public class Email {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-            message.setSubject("Actualizacion de datos en Banco-Pedagogico");
+            message.setSubject("Bienbvenido grandes-ofertas");
             java.util.Date fecha = new Date();
 
             message.setContent(
-                    "<center><img src='http://fs5.directupload.net/images/160530/khs5cmdc.jpg' title='Banco Pedagogico'></center>"
-                    + "<h3> Actualizacion de datos en Banco-Pedagogico. "
+                    "<center><img src='http://https://www.elcarrocolombiano.com/wp-content/uploads/2018/07/20180705-SUZUKI-JIMNY-2019-CARACTERISTICAS-INFORMACION-COMPLETA-01A-750x375.jpg' title='tuauto.com'></center>"
+                    + "<h3> promocion del 50% en camperos de todas las marcas "
                     + Nombres
                     + "</h3>"
                     + "Datos de Ingreso: "
@@ -94,10 +94,10 @@ public class Email {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-            message.setSubject("Recordatorio Claves alvarez system");
+            message.setSubject("Recordatorio Claves ");
 
             message.setContent(
-                    "<center><img src='https://informatica.uca.es/wp-content/uploads/2016/02/candado.jpg' title='Recordatorio Claves Ficha'></center>"
+                    "<center><img src='https://https://www.google.com/url?sa=i&url=https%3A%2F%2Fglobbsecurity.com%2Fdia-mundial-de-las-contrasenas-ataques-mas-comunes-y-como-evitarlos-44565%2F&psig=AOvVaw1l50u95eZpHCURYuM11lm3&ust=1617465558789000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOjZ3_f23-8CFQAAAAAdAAAAABAD' title='Recordatorio Claves tuauto.com'></center>"
                     + "<h3> Recordatorio Claves. "
                     + Nombres
                     + "</h3>"
@@ -120,7 +120,7 @@ public class Email {
 
     }
 
-    public static void sendBienvenidos(String para, String Nombres, String nombUsu, String clave) {
+    public static void sendBienvenido(String para, String Nombres, String nombUsu, String clave) {
          final String user = "adsiwebjava@gmail.com";//cambiará en consecuencia al servidor utilizado
         final String pass = "adsi2020";
 
@@ -145,11 +145,11 @@ public class Email {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-            message.setSubject("Grandes promociones");
+            message.setSubject("Bienvenido Banco-Pedagogico");
 
             message.setContent(
-                    "<center><img src='https://imganuncios.mitula.net/medium/camperos_jeep_wrangler_sport_jeep_wrangler_sport_x_2_puertas_modelo_2010_78_900_000_96635424096073939.jpg' title='Promocion'></center>"
-                    + "<h3> Promocion del 50% en camperos de todas las marcas. "
+                    "<center><img src='https://i.pinimg.com/originals/21/b5/10/21b510a268fc4f7e46607bf482995ae9.png' title='Bienvenidos'></center>"
+                    + "<h3> Bienvenido. "
                     + Nombres
                     + "</h3>"
                     + "Datos de Ingreso: "
@@ -173,8 +173,8 @@ public class Email {
 
     public static void send(String para, String sujeto, String mensaje) {
 
-        final String user = "";//cambiará en consecuencia al servidor utilizado
-        final String pass = "";
+        final String user = "adsiwebjava@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "adsi2020";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();

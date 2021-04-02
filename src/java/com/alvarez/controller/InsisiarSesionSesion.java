@@ -121,15 +121,16 @@ public class InsisiarSesionSesion implements Serializable {
     }
 
      
-      public void correoMasivo() {
+      public void correo() {
           String mensajeSw = "";
         try {
-            for (Usuario Usuario : listaUsuarios) {
-                Email.sendBienvenidos(Usuario.getCorreo(),
-                        Usuario.getDatosid().getNombre() + " " + Usuario.getDatosid().getApellido(),
-                        Usuario.getContraseña(), Usuario.getContraseña());
-                 mensajeSw = "swal('Mensage' , ' enviado correctamente  ', 'success')";
-            }
+              for (Usuario Usuario1 : listaUsuarios) {
+                  Email.sendModificacion(Usuario1.getCorreo(),
+                          Usuario1.getDatosid().getNombre() + " " + Usuario1.getDatosid().getApellido(),
+                          Usuario1.getCorreo(), Usuario1.getTipoCuenta());
+                  
+                  mensajeSw = "swal('Mensage' , ' enviado correctamente  ', 'success')";
+              }
         } catch (Exception e) {
               mensajeSw = "swal('El mensage' , ' No fue enviado  ', 'error')";
         }
