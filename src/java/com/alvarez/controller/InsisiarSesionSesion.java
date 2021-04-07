@@ -55,7 +55,7 @@ public class InsisiarSesionSesion implements Serializable {
         usuarioEJB.iniciarSesion(usuario);
      FacesContext fc = FacesContext.getCurrentInstance();
       mensajeSw = "swal('Bienvenido ' , ' Al sistema  ', 'aviso')";
-                fc.getExternalContext().redirect("../Comprador/clientes.xhtml");
+                fc.getExternalContext().redirect("../Comprador/clientes_1.xhtml");
                 
        }else{
         mensajeSw = "swal('El usuario ' , ' ingreso datos incorrectos  ', 'error')";
@@ -112,6 +112,7 @@ public class InsisiarSesionSesion implements Serializable {
      public void actualizarMisDatos() {
         String mensajeSw = " ";
         try {
+           
             usuarioEJB.edit(usuario);
             mensajeSw = "swal('Se actualizaron ' , 'Sus datos exitosamente  ', 'success')";
         } catch (Exception e) {
